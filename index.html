@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dmitry Rybalka — Front-end Developer</title>
+    <meta name="description" content="Дмитрий Рыбалка — фронтенд-разработчик. Создаю современные адаптивные сайты на HTML, CSS, JavaScript и React.">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+    <!-- Превью ссылки -->
+    <meta name="theme-color" content="#050816">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dmitry Rybalka — Front-end Developer">
+    <meta property="og:description" content="Сайты-визитки и лендинги: вёрстка по макету и разработка. Открыт к заказам.">
+    <meta property="og:image" content="https://dmitry192-del.github.io/portfolio-site/images/og.png">
+    <meta property="og:url" content="https://dmitry192-del.github.io/portfolio-site/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Заранее открываем соединения со шрифтами и иконками, чтобы они грузились быстрее -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- Ставим тему ДО отрисовки страницы, чтобы не было мигания -->
+    <script>
+        (function () {
+            const сохранённаяТема = localStorage.getItem('theme');
+            const системнаяТемаСветлая = window.matchMedia('(prefers-color-scheme: light)').matches;
+            document.documentElement.dataset.theme = сохранённаяТема || (системнаяТемаСветлая ? 'light' : 'dark');
+        })();
+    </script>
+</head>
+<body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <header class="header">
+        <div class="container header__inner">
+
+            <a href="#hero" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                    <line x1="14" y1="4" x2="10" y2="20"></line>
+                </svg>
+                <span>Dmitry</span>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Основная навигация">
+                <a href="#hero" class="nav__link nav__link--active">Главная</a>
+                <a href="#about" class="nav__link">Обо мне</a>
+                <a href="#skills" class="nav__link">Навыки</a>
+                <a href="#projects" class="nav__link">Проекты</a>
+                <a href="#contacts" class="nav__link">Контакты</a>
+            </nav>
+
+            <div class="header__actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                    <!-- Солнце: видно в тёмной теме -->
+                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Луна: видна в светлой теме -->
+                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+
+                <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero" id="hero">
+            <div class="container hero__inner">
+
+                <!-- Левая колонка: текст -->
+                <div class="hero__content">
+                    <p class="hero__label">Front-end developer</p>
+                    <h1 class="hero__title">
+                        <span>Dmitry</span>
+                        <span>Rybalka</span>
+                    </h1>
+                    <p class="hero__text">
+                        Создаю современные, быстрые и удобные веб-сайты с вниманием к деталям и чистым кодом.
+                    </p>
+
+                    <div class="hero__buttons">
+                        <a href="#projects" class="btn btn--primary">
+                            Мои работы
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#contacts" class="btn btn--outline">Связаться</a>
+                    </div>
+
+                    <div class="hero__socials">
+                        <span class="hero__socials-title">Социальные сети</span>
+
+                        <a href="https://github.com/Dmitry192-del" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/Dmitry_0796" class="social-link" aria-label="Telegram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: фото -->
+                <div class="hero__visual">
+                    <img class="hero__photo" src="images/photo.webp" alt="Дмитрий Рыбалка">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about__inner">
+
+                <div class="about__content">
+                    <h2 class="section-title">Обо мне</h2>
+                    <p class="about__text">
+                        Привет! Я фронтенд-разработчик из России. Окончил бакалавриат, сейчас учусь
+                        в магистратуре и беру первые заказы на вёрстку по макету и разработку сайтов.
+                    </p>
+                </div>
+
+                <ul class="about__stats">
+                    <li class="stat-card">
+                        <span class="stat-card__value">Бакалавр + магистратура</span>
+                        <span class="stat-card__label">Информатика и вычислительная техника</span>
+                    </li>
+                    <li class="stat-card">
+                        <span class="stat-card__value">4 проекта</span>
+                        <span class="stat-card__label">Учебные и реальные</span>
+                    </li>
+                    <li class="stat-card">
+                        <span class="stat-card__value">HTML, CSS, JS</span>
+                        <span class="stat-card__label">Основной стек</span>
+                    </li>
+                    <li class="stat-card">
+                        <span class="stat-card__value">Открыт к заказам</span>
+                        <span class="stat-card__label">Фриланс и проекты под ключ</span>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="section skills" id="skills">
+            <div class="container">
+                <h2 class="section-title">Навыки</h2>
+
+                <ul class="skills__list">
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">HTML5</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">CSS3</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">JavaScript</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">React</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nextjs/nextjs-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">Next.js</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">Tailwind CSS</span>
+                    </li>
+                    <li class="skill">
+                        <div class="skill__icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" width="40" height="40" loading="lazy">
+                        </div>
+                        <span class="skill__name">Git</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="container">
+
+                <div class="projects__head">
+                    <h2 class="section-title">Проекты</h2>
+
+                    <div class="slider-controls">
+                        <button class="slider-btn" id="projects-prev" aria-label="Предыдущий проект">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                        </button>
+                        <button class="slider-btn" id="projects-next" aria-label="Следующий проект">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="projects__list">
+
+                    <!-- Speakly -->
+                    <li class="project-card">
+                        <div class="project-card__media">
+                            <img src="images/projects/speakly.png" alt="Скриншот приложения Speakly" loading="lazy" onerror="this.remove()">
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__status">Дипломный проект</span>
+                            <h3 class="project-card__title">Speakly</h3>
+                            <p class="project-card__text">
+                                Веб-приложение для изучения иностранных языков с ИИ: уровни A1–C1, уроки разных типов, достижения и тёмная тема.
+                            </p>
+                            <div class="project-card__links">
+                                <a href="https://github.com/Dmitry192-del/language-learning-app" class="project-link" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Приглашение на девичник -->
+                    <li class="project-card">
+                        <div class="project-card__media">
+                            <img src="images/projects/wedding.png" alt="Скриншот сайта-приглашения на девичник" loading="lazy" onerror="this.remove()">
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__status">Личный проект</span>
+                            <h3 class="project-card__title">Приглашение на девичник</h3>
+                            <p class="project-card__text">
+                                Одностраничный сайт-приглашение: обратный отсчёт до события, программа, дресс-код и галерея.
+                            </p>
+                            <div class="project-card__links">
+                                <a href="https://github.com/Dmitry192-del/devichnik" class="project-link" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Этот сайт -->
+                    <li class="project-card">
+                        <div class="project-card__media">
+                            <img src="images/projects/portfolio.png" alt="Скриншот сайта-портфолио" loading="lazy" onerror="this.remove()">
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__status">Личный проект</span>
+                            <h3 class="project-card__title">Сайт-портфолио</h3>
+                            <p class="project-card__text">
+                                Адаптивная сайт-визитка без фреймворков: тёмная и светлая темы с анимацией переключения, мобильное меню и слайдер проектов.
+                            </p>
+                            <div class="project-card__links">
+                                <a href="https://github.com/Dmitry192-del/portfolio-site" class="project-link" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Сайт для магазина -->
+                    <li class="project-card">
+                        <div class="project-card__media">
+                            <!-- <img src="images/projects/premier.png" alt="Скриншот сайта салона отделочных материалов" loading="lazy" onerror="this.remove()"> -->
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__status project-card__status--wip">В разработке</span>
+                            <h3 class="project-card__title">Магазин отделочных материалов</h3>
+                            <p class="project-card__text">
+                                Каталог обоев и красок для реального заказчика: корзина, форма заказа и карта с контактами.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <section class="section contacts" id="contacts">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                <p class="contacts__text">
+                    Есть проект или предложение? Напишите мне любым удобным способом.
+                </p>
+
+                <ul class="contacts__list">
+                    <li>
+                        <a href="https://t.me/Dmitry_0796" class="contact-card" target="_blank" rel="noopener">
+                            <span class="contact-card__icon contact-card__icon--telegram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </span>
+                            <span class="contact-card__info">
+                                <span class="contact-card__name">Telegram</span>
+                                <span class="contact-card__value">@Dmitry_0796</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="contact-card contact-card--static">
+                            <span class="contact-card__icon contact-card__icon--email">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </span>
+                            <span class="contact-card__info">
+                                <span class="contact-card__name">Email</span>
+                                <span class="contact-card__value">dmitrylandrybalka@yandex.ru</span>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Dmitry192-del" class="contact-card" target="_blank" rel="noopener">
+                            <span class="contact-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                            </span>
+                            <span class="contact-card__info">
+                                <span class="contact-card__name">GitHub</span>
+                                <span class="contact-card__value">github.com/Dmitry192-del</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span>Dmitry © <span id="footer-year">2026</span>
+                <!-- <button type="button" class="footer__cookie-btn" id="cookie-settings">Настройки cookie</button> -->
+            </span>
+            <a href="#hero" class="to-top" aria-label="Наверх">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <!--<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Использование cookie" hidden>
+    <p class="cookie-banner__text">
+        Сайт использует cookie Яндекс Метрики для статистики посещений.
+        Оператор данных: Дмитрий Рыбалка. Подробнее в
+        <a href="privacy.html">политике обработки данных</a>.
+    </p>
+    <div class="cookie-banner__buttons">
+        <button type="button" class="cookie-banner__btn" id="cookie-decline">Отклонить</button>
+        <button type="button" class="cookie-banner__btn" id="cookie-accept">Принять</button>
+    </div>
+    </div> -->
+
+    <script src="js/script.js"></script>
+</body>
+</html>
